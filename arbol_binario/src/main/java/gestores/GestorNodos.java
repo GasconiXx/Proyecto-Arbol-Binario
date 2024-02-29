@@ -11,8 +11,10 @@ public class GestorNodos {
 
     private static HashMap<Nodo, Boolean> nodos = new HashMap<>();
 
-    public static void addNodo(Nodo nodo, boolean superExiste) {
-        nodos.put(nodo, superExiste);
+    public static void addNodo(Nodo nodo) {
+        if (condition) {
+            
+        }
     }
 
     

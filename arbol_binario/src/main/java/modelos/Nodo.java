@@ -8,12 +8,16 @@ public class Nodo {
     private String nodoSuper;
     private int costeNodo;
     private HashSet<String> subNodos;
+    private boolean raiz;
 
     public Nodo(String nodoSuper, String nombreNodo, int costeNodo) {
         setNodoSuper(nodoSuper);
         setNombreNodo(nombreNodo);
         setCosteNodo(costeNodo);
         subNodos = new HashSet<>();
+        if (nodoSuper == nombreNodo) {
+            raiz = true;
+        }
     }
 
     public String getNombreNodo() {
@@ -72,6 +76,11 @@ public class Nodo {
             return false;
         return true;
     }
+
+    public boolean isRaiz() {
+        return raiz;
+    }
+
 
     
     
