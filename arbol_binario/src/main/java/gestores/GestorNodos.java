@@ -13,7 +13,6 @@ public class GestorNodos {
 
     public static void addNodo(Nodo nodo) {
         if (condition) {
-            chincheto77
         }
     }
 
