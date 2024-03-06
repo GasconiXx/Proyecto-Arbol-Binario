@@ -5,19 +5,15 @@ import java.util.HashSet;
 public class Nodo {
 
     private String nombreNodo;
-    private String nodoSuper;
+    private Nodo nodoSuper;
     private int costeNodo;
-    private HashSet<String> subNodos;
-    private boolean raiz;
+    private HashSet<Nodo> subNodos;
 
-    public Nodo(String nodoSuper, String nombreNodo, int costeNodo) {
+    public Nodo(Nodo nodoSuper, String nombreNodo, int costeNodo) {
         setNodoSuper(nodoSuper);
         setNombreNodo(nombreNodo);
         setCosteNodo(costeNodo);
         subNodos = new HashSet<>();
-        if (nodoSuper == nombreNodo) {
-            raiz = true;
-        }
     }
 
     public String getNombreNodo() {
@@ -28,11 +24,11 @@ public class Nodo {
         this.nombreNodo = nombreNodo;
     }
 
-    public String getNodoSuper() {
+    public Nodo getNodoSuper() {
         return nodoSuper;
     }
 
-    public void setNodoSuper(String nodoSuper) {
+    public void setNodoSuper(Nodo nodoSuper) {
         this.nodoSuper = nodoSuper;
     }
 
@@ -44,11 +40,11 @@ public class Nodo {
         this.costeNodo = costeNodo;
     }
 
-    public HashSet<String> getSubNodos() {
+    public HashSet<Nodo> getSubNodos() {
         return subNodos;
     }
 
-    public void addSubnodo(String subNodo) {
+    public void addSubnodo(Nodo subNodo) {
         subNodos.add(subNodo);
     }
 
@@ -78,10 +74,12 @@ public class Nodo {
     }
 
     public boolean isRaiz() {
-        return raiz;
+        return nodoSuper.nombreNodo.equals(nombreNodo);
     }
 
-
+    public boolean isHoja(){
+        return subNodos.size() == 0;
+    }
     
     
 }

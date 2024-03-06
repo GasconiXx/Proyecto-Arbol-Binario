@@ -12,8 +12,7 @@ public class GestorNodos {
     private static HashMap<Nodo, Boolean> nodos = new HashMap<>();
 
     public static void addNodo(Nodo nodo) {
-        if (condition) {
-        }
+        
     }
 
     
