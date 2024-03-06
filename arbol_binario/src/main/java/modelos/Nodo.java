@@ -2,21 +2,36 @@ package modelos;
 
 import java.util.HashSet;
 
+import gestores.GestorNodos;
+
 public class Nodo {
 
     private String nombreNodo;
-    private String nodoSuper;
+    private String nombreNodoSuper;
+    private Nodo nodoSuper;
     private int costeNodo;
-    private HashSet<String> subNodos;
-    private boolean raiz;
+    private HashSet<Nodo> subNodos;
+    private boolean nodoSuperExiste;
 
-    public Nodo(String nodoSuper, String nombreNodo, int costeNodo) {
-        setNodoSuper(nodoSuper);
+    public Nodo(String nombreNodoSuper, String nombreNodo, int costeNodo) {
+        setNombreNodoSuper(nombreNodoSuper);
         setNombreNodo(nombreNodo);
         setCosteNodo(costeNodo);
         subNodos = new HashSet<>();
-        if (nodoSuper == nombreNodo) {
-            raiz = true;
+        if (nombreNodoSuper == nombreNodo) {
+            nodoSuper = null;
+            nodoSuperExiste = false;
+        } else {
+            setNodoSuper(nombreNodoSuper);
+        }
+    }
+
+    public void setNodoSuper(String nombreNodoSuper){
+        if (GestorNodos.buscarNodo(nombreNodoSuper) != null) {
+           this.nodoSuper = GestorNodos.buscarNodo(nombreNodoSuper);
+           this.nodoSuperExiste = true; 
+        } else {
+            this.nodoSuperExiste = false;
         }
     }
 
@@ -28,13 +43,11 @@ public class Nodo {
         this.nombreNodo = nombreNodo;
     }
 
-    public String getNodoSuper() {
+    public Nodo getNodoSuper() {
         return nodoSuper;
     }
 
-    public void setNodoSuper(String nodoSuper) {
-        this.nodoSuper = nodoSuper;
-    }
+
 
     public int getCosteNodo() {
         return costeNodo;
@@ -44,11 +57,11 @@ public class Nodo {
         this.costeNodo = costeNodo;
     }
 
-    public HashSet<String> getSubNodos() {
+    public HashSet<Nodo> getSubNodos() {
         return subNodos;
     }
 
-    public void addSubnodo(String subNodo) {
+    public void addSubnodo(Nodo subNodo) {
         subNodos.add(subNodo);
     }
 
@@ -78,10 +91,36 @@ public class Nodo {
     }
 
     public boolean isRaiz() {
-        return raiz;
+        return nodoSuper.nombreNodo.equals(nombreNodo);
     }
 
+    public boolean isHoja(){
+        return subNodos.size() == 0;
+    }
 
+    public void setNodoSuper(Nodo nodoSuper) {
+        this.nodoSuper = nodoSuper;
+    }
+
+    public void setSubNodos(HashSet<Nodo> subNodos) {
+        this.subNodos = subNodos;
+    }
+
+    public boolean isNodoSuperExiste() {
+        return nodoSuperExiste;
+    }
+
+    public void setNodoSuperExiste(boolean nodoSuperExiste) {
+        this.nodoSuperExiste = nodoSuperExiste;
+    }
+
+    public String getNombreNodoSuper() {
+        return nombreNodoSuper;
+    }
+
+    public void setNombreNodoSuper(String nombreNodoSuper) {
+        this.nombreNodoSuper = nombreNodoSuper;
+    }
     
     
 }
