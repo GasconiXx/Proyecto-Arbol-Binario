@@ -27,7 +27,7 @@ public class GestorNodos {
                 nodo.setNodoSuper(nodo.getNombreNodoSuper());
             }
         }
-    }
+    }//:)
 
     public static void asignarSubnodos(){
         for (Nodo nodo : nodos) {
