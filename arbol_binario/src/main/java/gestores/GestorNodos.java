@@ -28,6 +28,7 @@ public class GestorNodos {
             }
         }
     }//:)
+    //ploh
 
     public static void asignarSubnodos(){
         for (Nodo nodo : nodos) {
