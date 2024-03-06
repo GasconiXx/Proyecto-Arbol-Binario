@@ -2,18 +2,32 @@ package modelos;
 
 import java.util.HashSet;
 
+import gestores.GestorNodos;
+
 public class Nodo {
 
     private String nombreNodo;
     private Nodo nodoSuper;
     private int costeNodo;
     private HashSet<Nodo> subNodos;
+    private boolean nodoSuper;
 
-    public Nodo(Nodo nodoSuper, String nombreNodo, int costeNodo) {
-        setNodoSuper(nodoSuper);
+    public Nodo(String nombreNodoSuper, String nombreNodo, int costeNodo) {
+
         setNombreNodo(nombreNodo);
         setCosteNodo(costeNodo);
         subNodos = new HashSet<>();
+        if (nombreNodoSuper == nombreNodo) {
+            nodoSuper = null;
+        } else {
+            setNodoSuper(nombreNodoSuper);
+        }
+    }
+
+    public void setNodoSuper(String nombreNodoSuper){
+        if (GestorNodos.buscarNodo(nombreNodoSuper) != null) {
+            
+        }
     }
 
     public String getNombreNodo() {
@@ -28,9 +42,7 @@ public class Nodo {
         return nodoSuper;
     }
 
-    public void setNodoSuper(Nodo nodoSuper) {
-        this.nodoSuper = nodoSuper;
-    }
+
 
     public int getCosteNodo() {
         return costeNodo;

@@ -1,0 +1,10 @@
+La idea es la siguiente;
+
+El hecho de que se haga todo con atributos de la clase nodo se debe a que despues, para recorrer los caminos, se utilizara la recursividad
+en el nodo superior.
+Primero, el programa hará una pasada y registrará los nodos.
+    - Si el nodo superior de un nodo no existe, despues se hace otra pasada para asignarlo cuando este exista
+    (esto se hace con el atributo "nodoSuperExiste").
+    - Despues se hace otra pasada para asignar los subnodos a la coleccion del nodo super (esto
+    es necesario para saber que nodos son las hojas).
+    - Finalmente, se hace otra pasada SOLO en los nodos hoja y se guardan los caminos en un array.
