@@ -1,10 +1,6 @@
 package gestores;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import modelos.Nodo;
 
@@ -12,8 +8,8 @@ public class GestorNodos {
 
     private static HashSet<Nodo> nodos = new HashSet<>();
 
-    public static void addNodo(Nodo nodo) {
-        
+    public static boolean addNodo(Nodo nodo) {
+        return nodos.add(nodo);
     }
 
     public static Nodo buscarNodo(String nombreNodo) {
@@ -23,5 +19,19 @@ public class GestorNodos {
             }
         }
         return null;
+    }
+
+    public static void reasignarSupernodos(){
+        for (Nodo nodo : nodos) {
+            if (!nodo.isNodoSuperExiste()) {
+                nodo.setNodoSuper(nodo.getNombreNodoSuper());
+            }
+        }
+    }
+
+    public static void asignarSubnodos(){
+        for (Nodo nodo : nodos) {
+            nodo.getNodoSuper().addSubnodo(nodo);
+        }
     }
 }
