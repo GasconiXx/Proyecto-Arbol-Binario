@@ -126,7 +126,7 @@ public class Nodo {
     }
 
     
-    /**Este metodo se llama en un nodo raíz y va acumulando el coste de los supernodos de cada uno hasta que llega al nodo raiz;
+    /**Este metodo se llama en un nodo hoja y va acumulando el coste de los supernodos de cada uno hasta que llega al nodo raiz;
      * entonces devuelve el coste total
      * @param costeTotal es el coste incremental de la ruta, se inicia a 0
      * @return el coste total de la ruta
