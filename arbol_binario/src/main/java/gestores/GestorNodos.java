@@ -33,7 +33,7 @@ public class GestorNodos {
     }
 
     /**
-     * Este método asigna los subnodos a la coleccion de subnodos el su correspondiente supernodo
+     * Este método asigna los subnodos a la coleccion de subnodos de su correspondiente supernodo
      */
     public static void asignarSubnodos(){
         for (Nodo nodo : nodos) {
