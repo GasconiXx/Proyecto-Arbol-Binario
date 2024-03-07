@@ -21,15 +21,20 @@ public class GestorNodos {
         return null;
     }
 
+    /**
+     * El único proposito de este método es reasignar los supernodos que no existían cuando se registraban los nodos
+     */
     public static void reasignarSupernodos(){
         for (Nodo nodo : nodos) {
             if (!nodo.isNodoSuperExiste()) {
                 nodo.setNodoSuper(nodo.getNombreNodoSuper());
             }
         }
-    }//:)
-    //ploh
+    }
 
+    /**
+     * Este método asigna los subnodos a la coleccion de subnodos el su correspondiente supernodo
+     */
     public static void asignarSubnodos(){
         for (Nodo nodo : nodos) {
             nodo.getNodoSuper().addSubnodo(nodo);

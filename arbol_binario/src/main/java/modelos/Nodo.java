@@ -26,10 +26,15 @@ public class Nodo {
         }
     }
 
-    public void setNodoSuper(String nombreNodoSuper){
+    /**
+     * Este metodo establece un enlace entre este nodo y el supernodo correspondiente al nombre del supernodo proporcionado.
+     * En el caso de que el supernodo no exista aún en el gestor, se llamará a un metodo que asignará el sipernodo más tarde
+     * @param nombreNodoSuper nombre del supernodo segun el fichero
+     */
+    public void setNodoSuper(String nombreNodoSuper) {
         if (GestorNodos.buscarNodo(nombreNodoSuper) != null) {
-           this.nodoSuper = GestorNodos.buscarNodo(nombreNodoSuper);
-           this.nodoSuperExiste = true; 
+            this.nodoSuper = GestorNodos.buscarNodo(nombreNodoSuper);
+            this.nodoSuperExiste = true;
         } else {
             this.nodoSuperExiste = false;
         }
@@ -46,8 +51,6 @@ public class Nodo {
     public Nodo getNodoSuper() {
         return nodoSuper;
     }
-
-
 
     public int getCosteNodo() {
         return costeNodo;
@@ -94,7 +97,7 @@ public class Nodo {
         return nodoSuper.nombreNodo.equals(nombreNodo);
     }
 
-    public boolean isHoja(){
+    public boolean isHoja() {
         return subNodos.size() == 0;
     }
 
@@ -121,6 +124,19 @@ public class Nodo {
     public void setNombreNodoSuper(String nombreNodoSuper) {
         this.nombreNodoSuper = nombreNodoSuper;
     }
+
     
-    
+    /**Este metodo se llama en un nodo raíz y va acumulando el coste de los supernodos de cada uno hasta que llega al nodo raiz;
+     * entonces devuelve el coste total
+     * @param costeTotal es el coste incremental de la ruta, se inicia a 0
+     * @return el coste total de la ruta
+     */
+    public int generarRuta(int costeTotal) {
+        costeTotal += this.costeNodo;
+        if (!this.isRaiz()) {
+            return this.nodoSuper.generarRuta(costeTotal);
+        } else {
+            return costeTotal;
+        }
+    }
 }
