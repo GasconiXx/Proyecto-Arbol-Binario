@@ -13,7 +13,7 @@ public class Nodo {
     private HashSet<Nodo> subNodos;
     private boolean nodoSuperExiste;
 
-    public Nodo(String nombreNodoSuper, String nombreNodo, int costeNodo) {
+    public Nodo(String nombreNodoSuper, String nombreNodo, String costeNodo) {
         setNombreNodoSuper(nombreNodoSuper);
         setNombreNodo(nombreNodo);
         setCosteNodo(costeNodo);
@@ -56,8 +56,8 @@ public class Nodo {
         return costeNodo;
     }
 
-    public void setCosteNodo(int costeNodo) {
-        this.costeNodo = costeNodo;
+    public void setCosteNodo(String costeNodo) {
+        this.costeNodo = Integer.parseInt(costeNodo);
     }
 
     public HashSet<Nodo> getSubNodos() {
