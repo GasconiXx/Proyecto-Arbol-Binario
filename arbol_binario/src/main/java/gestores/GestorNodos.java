@@ -1,6 +1,10 @@
 package gestores;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+
+import javax.swing.RowFilter.Entry;
 
 import modelos.Nodo;
 
@@ -39,5 +43,27 @@ public class GestorNodos {
         for (Nodo nodo : nodos) {
             nodo.getNodoSuper().addSubnodo(nodo);
         }
+    }
+
+    public static HashMap<String, Integer> hacerCaminos(){
+        HashMap<String, Integer> caminos = new HashMap<>();
+        for (Nodo nodo : nodos) {
+            if (nodo.isHoja()) {
+                caminos.put(nodo.getNombreNodo(), nodo.generarRuta(0));
+            }
+        }
+        return caminos;
+    }
+
+    public static String buscarCaminoBarato(HashMap<String, Integer> caminos){
+        String nodo = "";
+        int precioMenor = 0;
+        for (Map.Entry<String, Integer> entrada : caminos.entrySet()) {
+            if (entrada.getValue() < precioMenor) {
+                precioMenor = entrada.getValue();
+                nodo = entrada.getKey();
+            }
+        }
+        return nodo;
     }
 }

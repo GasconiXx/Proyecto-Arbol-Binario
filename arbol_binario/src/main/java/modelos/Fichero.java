@@ -9,8 +9,7 @@ import gestores.GestorNodos;
 
 public class Fichero {
 
-
-    private static void extraerDatos(File f) throws IOException{
+        public static void extraerDatos(File f) throws IOException{
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
             String linea;
